@@ -1,12 +1,14 @@
 Summary: An XML parser library
 Name: expat
 Version: 2.0.1
-Release: 9.1%{?dist}
+Release: 11%{?dist}
 Group: System Environment/Libraries
 Source: http://downloads.sourceforge.net/expat/expat-%{version}.tar.gz
 Patch1: expat-2.0.1-confcxx.patch
 Patch2: expat-2.0.1-CVE-2009-3560-revised.patch
 Patch3: expat-1.95.8-CVE-2009-3720.patch
+Patch4: expat-2.0.1-CVE-2012-0876.patch
+Patch5: expat-2.0.1-CVE-2012-1148.patch
 URL: http://www.libexpat.org/
 License: MIT
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -34,6 +36,8 @@ to develop XML applications with expat.
 %patch1 -p1 -b .confcxx
 %patch2 -p1 -b .newcve3560
 %patch3 -p1 -b .cve3720
+%patch4 -p1 -b .cve0876
+%patch5 -p1 -b .cve1148
 
 %build
 rm -rf autom4te*.cache
@@ -83,6 +87,13 @@ rm -rf ${RPM_BUILD_ROOT}
 %{_includedir}/*.h
 
 %changelog
+* Fri Apr 27 2012 Joe Orton <jorton@redhat.com> - 2.0.1-11
+- use symbol version for XML_SetHashSalt (CVE-2012-0876, #816306)
+
+* Thu Apr 12 2012 Joe Orton <jorton@redhat.com> - 2.0.1-10
+- add security fix for CVE-2012-1148 (#811825)
+- add security fix for CVE-2012-0876 (#811833)
+
 * Mon Feb  8 2010 Joe Orton <jorton@redhat.com> - 2.0.1-9.1
 - revised fix for CVE-2009-3560 (#544996)
 
