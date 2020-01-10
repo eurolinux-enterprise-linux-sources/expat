@@ -1,7 +1,7 @@
 Summary: An XML parser library
 Name: expat
 Version: 2.1.0
-Release: 6%{?dist}
+Release: 8%{?dist}
 Group: System Environment/Libraries
 Source: http://downloads.sourceforge.net/expat/expat-%{version}.tar.gz
 Patch0: expat-2.1.0-xmlwfargs.patch
@@ -85,6 +85,12 @@ rm -rf ${RPM_BUILD_ROOT}
 %{_libdir}/lib*.a
 
 %changelog
+* Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 2.1.0-8
+- Mass rebuild 2014-01-24
+
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 2.1.0-7
+- Mass rebuild 2013-12-27
+
 * Mon Jun 17 2013 Joe Orton <jorton@redhat.com> - 2.1.0-6
 - fix "xmlwf -h" output (#948534)
 
