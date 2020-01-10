@@ -1,11 +1,10 @@
 Summary: An XML parser library
 Name: expat
 Version: 2.1.0
-Release: 10%{?dist}
+Release: 6%{?dist}
 Group: System Environment/Libraries
 Source: http://downloads.sourceforge.net/expat/expat-%{version}.tar.gz
 Patch0: expat-2.1.0-xmlwfargs.patch
-Patch1: expat-2.1.0-CVE-2016-0718.patch
 URL: http://www.libexpat.org/
 License: MIT
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -40,7 +39,6 @@ Install it if you need to link statically with expat.
 %prep
 %setup -q
 %patch0 -p1 -b .xmlwfargs
-%patch1 -p1 -b .cve0718
 
 %build
 rm -rf autom4te*.cache
@@ -87,18 +85,6 @@ rm -rf ${RPM_BUILD_ROOT}
 %{_libdir}/lib*.a
 
 %changelog
-* Thu Nov 24 2016 Joe Orton <jorton@redhat.com> - 2.1.0-10
-- updated security fix for CVE-2016-0718
-
-* Thu Nov 24 2016 Joe Orton <jorton@redhat.com> - 2.1.0-9
-- add security fix for CVE-2016-0718
-
-* Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 2.1.0-8
-- Mass rebuild 2014-01-24
-
-* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 2.1.0-7
-- Mass rebuild 2013-12-27
-
 * Mon Jun 17 2013 Joe Orton <jorton@redhat.com> - 2.1.0-6
 - fix "xmlwf -h" output (#948534)
 
